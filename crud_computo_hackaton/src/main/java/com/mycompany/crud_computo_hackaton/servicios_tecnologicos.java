@@ -4,6 +4,8 @@
  */
 package com.mycompany.crud_computo_hackaton;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -31,6 +33,7 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -49,6 +52,12 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtTipoEquipo = new javax.swing.JTextField();
+        cbProfesionSistema = new javax.swing.JComboBox<>();
+        etiResultado2 = new javax.swing.JTextField();
+        rbFemenino = new javax.swing.JRadioButton();
+        rbMasculino = new javax.swing.JRadioButton();
+        txtOpcionSexo = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListadoComputos = new javax.swing.JTable();
@@ -100,6 +109,42 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
 
         jLabel7.setText("Tipo de Equipo");
 
+        cbProfesionSistema.setEditable(true);
+        cbProfesionSistema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "junior", "front end", "back end", "senior" }));
+        cbProfesionSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbProfesionSistemaActionPerformed(evt);
+            }
+        });
+
+        etiResultado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                etiResultado2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbFemenino);
+        rbFemenino.setText("femenino");
+        rbFemenino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFemeninoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbMasculino);
+        rbMasculino.setText("Masculino");
+        rbMasculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbMasculinoActionPerformed(evt);
+            }
+        });
+
+        txtOpcionSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOpcionSexoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,31 +152,47 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtId)
-                                    .addComponent(txtNombreSerie)
-                                    .addComponent(txtMarca)
-                                    .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
-                            .addComponent(txtEspecificacionesTecnicas)
-                            .addComponent(txtEstadoMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                            .addComponent(txtTipoEquipo))))
-                .addContainerGap())
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 171, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtId)
+                                            .addComponent(txtNombreSerie)
+                                            .addComponent(txtMarca)
+                                            .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
+                                    .addComponent(txtEspecificacionesTecnicas)
+                                    .addComponent(txtEstadoMantenimiento)
+                                    .addComponent(txtTipoEquipo))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbFemenino)
+                                    .addComponent(rbMasculino))
+                                .addGap(33, 33, 33)
+                                .addComponent(txtOpcionSexo))
+                            .addComponent(etiResultado2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbProfesionSistema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(24, 24, 24))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,11 +226,26 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtTipoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbProfesionSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(etiResultado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(rbFemenino)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbMasculino))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(txtOpcionSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(btnGuardar)
                 .addGap(18, 18, 18)
                 .addComponent(btnModificar)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(btnEliminar)
                 .addGap(31, 31, 31))
         );
@@ -198,14 +274,14 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,9 +290,9 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -241,12 +317,19 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
         CComputo objetoComputo = new CComputo();
         objetoComputo.InsertarAlumno(txtNombreSerie, txtMarca, txtModelo, txtEspecificacionesTecnicas, txtEstadoMantenimiento, txtTipoEquipo);
         objetoComputo.MostrarAlumnos(tbListadoComputos);
+        String opcion = " El sexo es : ";
+        if(rbFemenino.isSelected()){
+            opcion = opcion + rbFemenino.getText().toString();
+        }else if (rbMasculino.isSelected()){
+            opcion = opcion + rbMasculino.getText().toString();
+        }
+        txtOpcionSexo.setText(opcion);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         CComputo objetoComputo = new CComputo();
-        objetoComputo.ModificarAlumnos(txtId, txtNombreSerie, txtMarca, txtModelo, txtEspecificacionesTecnicas, txtEstadoMantenimiento);
+        objetoComputo.ModificarAlumnos(txtId, txtNombreSerie, txtMarca, txtModelo, txtEspecificacionesTecnicas, txtEstadoMantenimiento, txtTipoEquipo);
         objetoComputo.MostrarAlumnos(tbListadoComputos);
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -260,8 +343,40 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
     private void tbListadoComputosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListadoComputosMouseClicked
         // TODO add your handling code here:
         CComputo objetoComputo = new CComputo();
-        objetoComputo.SeleccionarAlumno(tbListadoComputos, txtId, txtNombreSerie, txtMarca, txtModelo, txtEspecificacionesTecnicas, txtEstadoMantenimiento);
+        objetoComputo.SeleccionarAlumno(tbListadoComputos, txtId, txtNombreSerie, txtMarca, txtModelo, txtEspecificacionesTecnicas, txtEstadoMantenimiento, txtTipoEquipo);
     }//GEN-LAST:event_tbListadoComputosMouseClicked
+
+    private void cbProfesionSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProfesionSistemaActionPerformed
+        // TODO add your handling code here:
+        String mensaje = "La Profesion o el nivel que te encuentras es : ";
+        mensaje = mensaje+cbProfesionSistema.getSelectedItem().toString();
+        etiResultado2.setText(mensaje);
+    }//GEN-LAST:event_cbProfesionSistemaActionPerformed
+
+    private void rbFemeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFemeninoActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Femenino");
+    }//GEN-LAST:event_rbFemeninoActionPerformed
+    
+    private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Masculino");
+    }//GEN-LAST:event_rbMasculinoActionPerformed
+
+    private void etiResultado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etiResultado2ActionPerformed
+        // TODO add your handling code here:
+        /*String opcion = " El sexo es : ";
+        if(rbFemenino.isSelected()){
+            opcion = opcion + rbFemenino.getText().toString();
+        }else if (rbMasculino.isSelected()){
+            opcion = opcion + rbMasculino.getText().toString();
+        }
+        txtOpcionSexo.setText(opcion);*/
+    }//GEN-LAST:event_etiResultado2ActionPerformed
+
+    private void txtOpcionSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOpcionSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOpcionSexoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +417,9 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbProfesionSistema;
+    private javax.swing.JTextField etiResultado2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -313,6 +431,9 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JRadioButton rbFemenino;
+    private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTable tbListadoComputos;
     private javax.swing.JTextField txtEspecificacionesTecnicas;
     private javax.swing.JTextField txtEstadoMantenimiento;
@@ -320,6 +441,7 @@ public class servicios_tecnologicos extends javax.swing.JFrame {
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNombreSerie;
+    private javax.swing.JTextField txtOpcionSexo;
     private javax.swing.JTextField txtTipoEquipo;
     // End of variables declaration//GEN-END:variables
 }

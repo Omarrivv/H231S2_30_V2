@@ -147,16 +147,17 @@ public class CComputo {
         }
     }
     
-    public void SeleccionarAlumno(JTable paramTablaListaComputo, JTextField paramId, JTextField paramNombreSerie, JTextField paramMarca, JTextField paramModelo, JTextField paramEspecificacionesTecnicas, JTextField paramEstadoManteniiento){
+    public void SeleccionarAlumno(JTable paramTablaListaComputo, JTextField paramId, JTextField paramNombreSerie, JTextField paramMarca, JTextField paramModelo, JTextField paramEspecificacionesTecnicas, JTextField paramEstadoManteniiento, JTextField paramTipoEquipo){
         try {
             int fila = paramTablaListaComputo.getSelectedRow();
             if (fila>=0){
                 paramId.setText(paramTablaListaComputo.getValueAt(fila, 0).toString());
-                paramNombreSerie.setText(paramTablaListaComputo.getValueAt(fila, 1).toString());
+                paramTipoEquipo.setText(paramTablaListaComputo.getValueAt(fila, 1).toString());
                 paramMarca.setText(paramTablaListaComputo.getValueAt(fila, 2).toString());
                 paramModelo.setText(paramTablaListaComputo.getValueAt(fila, 3).toString());
-                paramEspecificacionesTecnicas.setText(paramTablaListaComputo.getValueAt(fila, 4).toString());
-                paramEstadoManteniiento.setText(paramTablaListaComputo.getValueAt(fila, 5).toString());
+                paramNombreSerie.setText(paramTablaListaComputo.getValueAt(fila, 4).toString());
+                paramEspecificacionesTecnicas.setText(paramTablaListaComputo.getValueAt(fila, 5).toString());
+                paramEstadoManteniiento.setText(paramTablaListaComputo.getValueAt(fila, 6).toString());
             }else{
                 JOptionPane.showMessageDialog(null, "Fila no seleccionada Error");
             }
@@ -166,24 +167,26 @@ public class CComputo {
         
     }
     
-    public void ModificarAlumnos(JTextField paramCodigo, JTextField paramNombreSerie, JTextField paramMarca, JTextField paramModelo, JTextField paramEspecificacionesTecnicas, JTextField paramEstadoMantenimiento){
+    public void ModificarAlumnos(JTextField paramCodigo, JTextField paramNombreSerie, JTextField paramMarca, JTextField paramModelo, JTextField paramEspecificacionesTecnicas, JTextField paramEstadoMantenimiento, JTextField paramTipoEquipo){
         setCodigo(Integer.parseInt(paramCodigo.getText()));
         setNombreSerie(paramNombreSerie.getText());
         setMarca(paramMarca.getText());
         setModelo(paramModelo.getText());
         setEspesificacionesTecnicas(paramEspecificacionesTecnicas.getText());
         setEstadoMantenimiento(paramEstadoMantenimiento.getText());
+        setTipoEquipo(paramTipoEquipo.getText());
         CConexion objetoConexion = new CConexion();
         
-        String consulta = "UPDATE Equipos SET NumeroSerie = ?, Marca = ?, Modelo = ?, EspecificacionesTecnicas = ?, EstadoMantenimiento = ? WHERE ID=?;";        
+        String consulta = "UPDATE Equipos SET tipoEquipo = ?, Marca = ?, Modelo = ?, NumeroSerie = ?, EspecificacionesTecnicas = ?, EstadoMantenimiento = ? WHERE ID=?;";        
         try {
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
-            cs.setString(1, getNombreSerie());
+            cs.setString(1, getTipoEquipo());
             cs.setString(2, getMarca());
             cs.setString(3, getModelo());
-            cs.setString(4, getEspesificacionesTecnicas());
-            cs.setString(5, getEstadoMantenimiento());
-            cs.setInt(6, getCodigo());
+            cs.setString(4, getNombreSerie());
+            cs.setString(5, getEspesificacionesTecnicas());
+            cs.setString(6, getEstadoMantenimiento());
+            cs.setInt(7, getCodigo());
             cs.execute();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
         } catch (SQLException e) {
